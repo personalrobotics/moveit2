@@ -87,7 +87,7 @@ struct ServoParameters
   std::string ee_frame_name{ "panda_link8" };
   bool is_primary_planning_scene_monitor = { true };
   std::string monitored_planning_scene_topic{
-    planning_scene_monitor::PlanningSceneMonitor::MONITORED_PLANNING_SCENE_TOPIC
+    planning_scene_monitor::PlanningSceneMonitor::DEFAULT_PLANNING_SCENE_TOPIC
   };
   // Stopping behaviour
   double incoming_command_timeout{ 0.1 };
