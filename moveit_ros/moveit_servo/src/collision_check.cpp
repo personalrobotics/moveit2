@@ -101,8 +101,8 @@ void CollisionCheck::run()
 
   // Do a timer-safe distance-based collision detection
   collision_result_.clear();
-  getLockedPlanningSceneRO()->getCollisionEnv()->checkRobotCollision(collision_request_, collision_result_,
-                                                                     *current_state_);
+  getLockedPlanningSceneRO()->getCollisionEnv()->checkRobotCollision(
+      collision_request_, collision_result_, *current_state_, getLockedPlanningSceneRO()->getAllowedCollisionMatrix());
   scene_collision_distance_ = collision_result_.distance;
   collision_detected_ |= collision_result_.collision;
   collision_result_.print();
