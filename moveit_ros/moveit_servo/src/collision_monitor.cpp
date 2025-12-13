@@ -62,6 +62,8 @@ CollisionMonitor::CollisionMonitor(const planning_scene_monitor::PlanningSceneMo
   scene_collision_request_.group_name = servo_params.move_group_name;
 
   self_collision_request_.distance = true;
+  self_collision_request_.verbose = true;
+  self_collision_request_.detailed_distance = true;
   self_collision_request_.group_name = servo_params.move_group_name;
 }
 

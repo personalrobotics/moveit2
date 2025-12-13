@@ -521,7 +521,7 @@ KinematicState Servo::getNextJointState(const moveit::core::RobotStatePtr& robot
     target_state.velocities *= joint_velocity_limit_scale;
 
     // Adjust joint position based on scaled down velocity
-    target_state.positions = current_state.positions + (target_state.velocities * servo_params_.publish_period);
+    target_state.positions = current_state.positions + (target_state.velocities * servo_params_.publish_period) * 20;
 
     // Apply collision scaling to the joint position delta
     target_state.positions =
