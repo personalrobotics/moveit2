@@ -463,7 +463,10 @@ Eigen::VectorXd Servo::jointDeltaFromCommand(const ServoInput& command, const mo
     servo_status_ = StatusCode::INVALID;
     RCLCPP_WARN_STREAM(logger_, "Incoming servo command type does not match known command types.");
   }
+  // if we are in forward_position_controller, multiply the joint_position_deltas by 4
 
+  joint_position_deltas *= servo_params_.position_control_gain; 
+  
   return joint_position_deltas;
 }
 
@@ -521,7 +524,7 @@ KinematicState Servo::getNextJointState(const moveit::core::RobotStatePtr& robot
     target_state.velocities *= joint_velocity_limit_scale;
 
     // Adjust joint position based on scaled down velocity
-    target_state.positions = current_state.positions + (target_state.velocities * servo_params_.publish_period) * 20;
+    target_state.positions = current_state.positions + (target_state.velocities * servo_params_.publish_period);
 
     // Apply collision scaling to the joint position delta
     target_state.positions =
