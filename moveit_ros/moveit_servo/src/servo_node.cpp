@@ -386,7 +386,7 @@ void ServoNode::servoLoop()
         // if all joint_cmd_rolling_window_ is empty or all commands in it are outdated, use current robot state
         joint_cmd_rolling_window_.clear();
         current_state = servo_->getCurrentRobotState(false /* block for current robot state */);
-        current_state.velocities *= 0.0;
+        // current_state.velocities *= 0.0;
       }
 
       // update robot state values
@@ -395,7 +395,7 @@ void ServoNode::servoLoop()
 
       next_joint_state = std::nullopt;
       const CommandType expected_type = servo_->getCommandType();
-
+      
       if (expected_type == CommandType::JOINT_JOG && new_joint_jog_msg_)
       {
         next_joint_state = processJointJogCommand(robot_state);

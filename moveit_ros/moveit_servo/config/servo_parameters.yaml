@@ -340,3 +340,14 @@ servo:
       bounds<>: [0.0, 1.0]
     }
   }
+
+  position_control_gain: {
+    type: double,
+    default_value: 1.0,
+    description: "Gain multiplier applied to joint position deltas before publishing. \
+                  Useful when commanding a forward_position_controller where larger steps \
+                  are needed to achieve the desired Cartesian velocity.",
+    validation: {
+      gt<>: 0.0
+    }
+  }

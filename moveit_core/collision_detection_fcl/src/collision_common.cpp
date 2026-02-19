@@ -611,6 +611,11 @@ bool distanceCallback(fcl::CollisionObjectd* o1, fcl::CollisionObjectd* o2, void
     // get overwritten.
     thread_local DistanceResultsData dist_result;
     dist_result.distance = fcl_result.min_distance;
+    // print the distance
+    // if (cdata->req->verbose)
+    // {
+    // RCLCPP_INFO(getLogger(), "Distance between %s and %s is %f", cd1->getID().c_str(), cd2->getID().c_str(), dist_result.distance);
+    // }
 
     // Careful here: Get the collision geometry data again, since FCL might
     // swap o1 and o2 in the result.

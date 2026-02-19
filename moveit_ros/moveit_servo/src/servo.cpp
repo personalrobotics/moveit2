@@ -463,7 +463,10 @@ Eigen::VectorXd Servo::jointDeltaFromCommand(const ServoInput& command, const mo
     servo_status_ = StatusCode::INVALID;
     RCLCPP_WARN_STREAM(logger_, "Incoming servo command type does not match known command types.");
   }
+  // if we are in forward_position_controller, multiply the joint_position_deltas by 4
 
+  joint_position_deltas *= servo_params_.position_control_gain; 
+  
   return joint_position_deltas;
 }
 
