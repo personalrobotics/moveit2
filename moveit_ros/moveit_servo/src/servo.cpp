@@ -545,7 +545,8 @@ KinematicState Servo::getNextJointState(const moveit::core::RobotStatePtr& robot
     }
   }
 
-  // Apply smoothing to the positions if a smoother was provided.
+  // Use actual robot state as the filter's starting point, not the filter's previous output.
+  // resetSmoothing(current_state);
   doSmoothing(target_state);
 
   return target_state;
